@@ -36,6 +36,20 @@ npm run dev
 npm run build
 ```
 
+## 🤖 Google Gemini AI Setup
+To connect Bono AI Assistant to live Google Gemini AI:
+1. Get a free API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
+2. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+3. Add your key inside `.env`:
+   ```env
+   VITE_GEMINI_API_KEY=your_actual_api_key_here
+   ```
+4. Restart your development server (`npm run dev`). Bono will automatically switch to live Google Gemini 1.5 Flash with full Sundarban domain context!
+*(Note: If no API key is set, Bono automatically and seamlessly uses the built-in delta knowledge base without errors.)*
+
 ## 🛠️ Tech Stack
 - **Framework:** React 19 + Vite 8
 - **Styling:** Tailwind CSS v3 + PostCSS + Autoprefixer

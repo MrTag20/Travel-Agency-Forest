@@ -13,7 +13,8 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/travelData';
-import { INITIAL_SUGGESTIONS, processUserMessage } from '../data/aiAssistantKnowledge';
+import { INITIAL_SUGGESTIONS } from '../data/aiAssistantKnowledge';
+import { sendMessageToAssistant, isGeminiConfigured } from '../services/geminiService';
 
 export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onToggle }) {
   const [messages, setMessages] = useState([
@@ -52,7 +53,7 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
     }
   }, [isOpen]);
 
-  const handleSendMessage = (customText = null) => {
+  const handleSendMessage = async (customText = null) => {
     const textToSend = typeof customText === 'string' ? customText : inputText;
     if (!textToSend || !textToSend.trim()) return;
 
@@ -67,9 +68,12 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
     setInputText('');
     setIsTyping(true);
 
-    // Simulate natural AI thinking latency (350ms - 550ms)
-    setTimeout(() => {
-      const response = processUserMessage(textToSend, flowState);
+    try {
+      const response = await sendMessageToAssistant({
+        message: textToSend,
+        history: [...messages, userMessage],
+        flowState
+      });
 
       const botMessage = {
         id: `bot-${Date.now()}`,
@@ -79,7 +83,8 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
         packageCard: response.packageCard,
         suggestions: response.suggestions || [],
         action: response.action,
-        selectedPackageId: response.selectedPackageId
+        selectedPackageId: response.selectedPackageId,
+        isGeminiPowered: response.isGeminiPowered
       };
 
       if (response.nextStep) {
@@ -92,8 +97,21 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
       }
 
       setMessages((prev) => [...prev, botMessage]);
+    } catch (err) {
+      console.error('Error getting AI reply:', err);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: `bot-${Date.now()}`,
+          sender: 'bot',
+          text: "I am having a moment of delta static! 🌊 Please feel free to ask again or reach our team directly via WhatsApp.",
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          suggestions: ["Chat on WhatsApp", "View tour packages"]
+        }
+      ]);
+    } finally {
       setIsTyping(false);
-    }, 450);
+    }
   };
 
   const handleResetChat = () => {
@@ -215,11 +233,11 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
                       Bono AI Assistant
                     </h4>
                     <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-accent/25 text-accent tracking-wider">
-                      Naturalist
+                      {isGeminiConfigured() ? 'Gemini AI' : 'Naturalist'}
                     </span>
                   </div>
                   <div className="text-xs text-white/70">
-                    SM Bengal Travel • Online & Instant
+                    {isGeminiConfigured() ? 'Google Gemini Powered • Online' : 'SM Bengal Travel • Online & Instant'}
                   </div>
                 </div>
               </div>
