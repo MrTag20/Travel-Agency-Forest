@@ -29,7 +29,6 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
 
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [flowState, setFlowState] = useState(null);
   const [hasUnread, setHasUnread] = useState(true);
   const [showTooltip, setShowTooltip] = useState(true);
   const messagesEndRef = useRef(null);
@@ -71,8 +70,7 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
     try {
       const response = await sendMessageToAssistant({
         message: textToSend,
-        history: [...messages, userMessage],
-        flowState
+        history: [...messages, userMessage]
       });
 
       const botMessage = {
@@ -82,19 +80,9 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         packageCard: response.packageCard,
         suggestions: response.suggestions || [],
-        action: response.action,
         selectedPackageId: response.selectedPackageId,
         isGeminiPowered: response.isGeminiPowered
       };
-
-      if (response.nextStep) {
-        setFlowState({
-          step: response.nextStep,
-          selectedPackageId: response.selectedPackageId || (flowState ? flowState.selectedPackageId : null)
-        });
-      } else {
-        setFlowState(null);
-      }
 
       setMessages((prev) => [...prev, botMessage]);
     } catch (err) {
@@ -124,7 +112,6 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
         suggestions: INITIAL_SUGGESTIONS
       }
     ]);
-    setFlowState(null);
   };
 
   const handleKeyDown = (e) => {
