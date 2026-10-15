@@ -234,8 +234,11 @@
   }
 }
 
-/* Scroll Reveal Animations */
+/* ==========================================================================
+   Smooth Scroll Reveal Animations (Universal Engine)
+   ========================================================================== */
 .reveal-fade-up,
+.reveal-fade-down,
 .reveal-fade-left,
 .reveal-fade-right,
 .reveal-scale,
@@ -246,45 +249,65 @@
 
 html.reveal-ready .reveal-fade-up:not(.is-revealed) {
   opacity: 0;
-  transform: translate3d(0, 32px, 0);
+  transform: translate3d(0, 26px, 0);
+}
+
+html.reveal-ready .reveal-fade-down:not(.is-revealed) {
+  opacity: 0;
+  transform: translate3d(0, -26px, 0);
 }
 
 html.reveal-ready .reveal-fade-left:not(.is-revealed) {
   opacity: 0;
-  transform: translate3d(-32px, 0, 0);
+  transform: translate3d(-28px, 0, 0);
 }
 
 html.reveal-ready .reveal-fade-right:not(.is-revealed) {
   opacity: 0;
-  transform: translate3d(32px, 0, 0);
+  transform: translate3d(28px, 0, 0);
 }
 
 html.reveal-ready .reveal-scale:not(.is-revealed) {
   opacity: 0;
-  transform: scale3d(0.94, 0.94, 1) translate3d(0, 20px, 0);
+  transform: scale3d(0.94, 0.94, 1) translate3d(0, 16px, 0);
 }
 
 html.reveal-ready .reveal-fade-up,
+html.reveal-ready .reveal-fade-down,
 html.reveal-ready .reveal-fade-left,
 html.reveal-ready .reveal-fade-right,
 html.reveal-ready .reveal-scale,
 html.reveal-ready .reveal-on-scroll {
   will-change: opacity, transform;
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-fade-up.is-revealed,
+.reveal-fade-down.is-revealed,
 .reveal-fade-left.is-revealed,
 .reveal-fade-right.is-revealed,
 .reveal-scale.is-revealed,
 .reveal-on-scroll.is-revealed {
   opacity: 1 !important;
-  transform: translate3d(0, 0, 0) scale3d(1, 1, 1) !important;
+  transform: translate3d(0, 0, 0);
 }
+
+/* Stagger delay utilities */
+.delay-100 { transition-delay: 100ms; }
+.delay-150 { transition-delay: 150ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-250 { transition-delay: 250ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-350 { transition-delay: 350ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
 
 @media (max-width: 768px) {
   html.reveal-ready .reveal-fade-up:not(.is-revealed) {
-    transform: translate3d(0, 18px, 0);
+    transform: translate3d(0, 16px, 0);
+  }
+  html.reveal-ready .reveal-fade-down:not(.is-revealed) {
+    transform: translate3d(0, -16px, 0);
   }
   html.reveal-ready .reveal-fade-left:not(.is-revealed) {
     transform: translate3d(-16px, 0, 0);
@@ -293,7 +316,7 @@ html.reveal-ready .reveal-on-scroll {
     transform: translate3d(16px, 0, 0);
   }
   html.reveal-ready .reveal-scale:not(.is-revealed) {
-    transform: scale3d(0.97, 0.97, 1) translate3d(0, 12px, 0);
+    transform: scale3d(0.96, 0.96, 1) translate3d(0, 10px, 0);
   }
 }
 

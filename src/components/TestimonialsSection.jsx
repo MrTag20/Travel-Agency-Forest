@@ -105,12 +105,12 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 relative overflow-hidden bg-ivory/50" id="testimonials">
+    <section className="py-10 sm:py-14 relative overflow-hidden bg-ivory/50" id="testimonials">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Left Column: Visual Collage */}
-          <div className="lg:col-span-4 flex justify-center">
+          <div className="reveal-fade-left lg:col-span-4 flex justify-center">
             <div className="rounded-3xl overflow-hidden shadow-xl border border-sand/60 bg-white/40 p-2 max-w-sm lg:max-w-none">
               <img 
                 src="/images/testimonials-collage@2x.png" 
@@ -125,7 +125,7 @@ export default function TestimonialsSection() {
           <div className="lg:col-span-8 flex flex-col">
             
             {/* Header */}
-            <div className="mb-8">
+            <div className="reveal-fade-up mb-8">
               <div className="inline-flex items-center gap-2 mb-2">
                 <span className="w-8 h-[1px] bg-accent/60" />
                 <span className="text-xs font-bold uppercase tracking-widest text-accent">
@@ -145,7 +145,7 @@ export default function TestimonialsSection() {
             </div>
 
             {/* 4-Item Stats Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-4 rounded-2xl bg-white/80 backdrop-blur-md border border-sand/60 shadow-xs mb-8">
+            <div className="reveal-fade-up delay-100 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-4 rounded-2xl bg-white/80 backdrop-blur-md border border-sand/60 shadow-xs mb-8">
               {STATS.map((stat, sidx) => (
                 <div key={sidx} className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-lg bg-sand/30 flex items-center justify-center shrink-0">
@@ -168,7 +168,8 @@ export default function TestimonialsSection() {
               {visibleCards.map((item, idx) => (
                 <div 
                   key={`${item.id}-${idx}`} 
-                  className={`flex flex-col bg-white/90 backdrop-blur-md border border-[#d9c9b2]/70 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow ${
+                  data-delay={idx * 110}
+                  className={`reveal-fade-up flex flex-col bg-white/90 backdrop-blur-md border border-[#d9c9b2]/70 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all ${
                     idx === 2 ? 'hidden lg:flex' : idx === 1 ? 'hidden sm:flex' : 'flex'
                   }`}
                 >

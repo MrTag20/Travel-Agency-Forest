@@ -45,7 +45,7 @@ export default function WhyChooseUsSection({ onOpenBooking }) {
   ];
 
   return (
-    <section className="relative py-16 sm:py-24 overflow-hidden" id="why-choose-us">
+    <section className="relative pt-16 sm:pt-20 pb-8 sm:pb-10 overflow-hidden" id="why-choose-us">
       {/* Decorative compass watermark */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 opacity-10 pointer-events-none">
         <svg viewBox="0 0 100 100" fill="none" stroke="#2e3a2f" strokeWidth="1.2" className="w-full h-full">
@@ -62,7 +62,7 @@ export default function WhyChooseUsSection({ onOpenBooking }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Left Column: Visual Collage */}
-          <div className="lg:col-span-5 flex justify-center">
+          <div className="lg:col-span-5 flex justify-center reveal-fade-left">
             <div className="relative w-full max-w-md lg:max-w-none">
               <div className="rounded-3xl overflow-hidden shadow-2xl border border-sand/60 bg-white/40 p-2">
                 <img 
@@ -74,7 +74,7 @@ export default function WhyChooseUsSection({ onOpenBooking }) {
               </div>
 
               {/* Floating Trust Badge */}
-              <div className="absolute -bottom-5 -right-3 sm:right-4 bg-white/95 backdrop-blur-md border border-sand/70 rounded-2xl p-3.5 shadow-xl flex items-center gap-3">
+              <div className="reveal-scale delay-200 absolute -bottom-5 -right-3 sm:right-4 bg-white/95 backdrop-blur-md border border-sand/70 rounded-2xl p-3.5 shadow-xl flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center text-accent">
                   <Award className="w-5 h-5" />
                 </div>
@@ -87,9 +87,18 @@ export default function WhyChooseUsSection({ onOpenBooking }) {
           </div>
 
           {/* Right Column: Narrative */}
-          <div className="lg:col-span-7 flex flex-col items-start">
+          <div className="lg:col-span-7 flex flex-col items-start relative">
+            {/* Realistic Green Parrot on Branch straight to this line on right side (placed higher without overlaying hero) */}
+            <div className="reveal-fade-right hidden sm:block absolute right-0 lg:-right-6 -top-3 sm:-top-8 lg:-top-12 w-36 sm:w-44 lg:w-56 pointer-events-none drop-shadow-xl z-10 hover:scale-105 transition-transform duration-300">
+              <img 
+                src="/Realistic%20Green%20Parrot%20on%20Branch.png" 
+                alt="Realistic Green Parrot on Branch" 
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 mb-3">
+            <div className="reveal-fade-up inline-flex items-center gap-2 mb-3">
               <span className="text-xs sm:text-sm font-bold tracking-widest text-accent uppercase">
                 WHY CHOOSE US
               </span>
@@ -97,13 +106,13 @@ export default function WhyChooseUsSection({ onOpenBooking }) {
             </div>
 
             {/* Heading */}
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-4">
+            <h2 className="reveal-fade-up delay-100 font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-4 max-w-md lg:max-w-xl">
               More Than a Trip, <br />
               <span className="text-accent italic">A Deeper Connection.</span>
             </h2>
 
             {/* Description */}
-            <p className="text-sm sm:text-base text-primary/80 leading-relaxed mb-8 max-w-2xl">
+            <p className="reveal-fade-up delay-150 text-sm sm:text-base text-primary/80 leading-relaxed mb-8 max-w-2xl">
               At SM Bengal Travel, we don't just take you to the Sundarbans, we help you 
               experience its soul. With deep local knowledge, carefully planned journeys, 
               and a commitment to responsible travel, we make every trip meaningful, 
@@ -112,10 +121,11 @@ export default function WhyChooseUsSection({ onOpenBooking }) {
 
             {/* 4 Feature Cards (2x2 Grid) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-8">
-              {features.map((feat) => (
+              {features.map((feat, fidx) => (
                 <div 
                   key={feat.id} 
-                  className="p-4 rounded-2xl bg-white/85 backdrop-blur-sm border border-sand/60 shadow-sm hover:shadow-md transition-shadow flex items-start gap-3.5"
+                  data-delay={(fidx + 1) * 90}
+                  className="reveal-fade-up p-4 rounded-2xl bg-white/85 backdrop-blur-sm border border-sand/60 shadow-sm hover:shadow-md transition-all flex items-start gap-3.5"
                 >
                   <div 
                     className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 shadow-sm"
@@ -136,7 +146,7 @@ export default function WhyChooseUsSection({ onOpenBooking }) {
             </div>
 
             {/* Stats Bar */}
-            <div className="w-full p-4 sm:p-5 rounded-2xl bg-white/85 backdrop-blur-md border border-sand/60 shadow-sm flex flex-wrap items-center justify-around gap-4 sm:gap-6 mb-8">
+            <div className="reveal-fade-up delay-300 w-full p-4 sm:p-5 rounded-2xl bg-white/85 backdrop-blur-md border border-sand/60 shadow-sm flex flex-wrap items-center justify-around gap-4 sm:gap-6 mb-8">
               <div className="flex items-center gap-3">
                 <Users className="w-6 h-6 text-accent shrink-0" />
                 <div>
@@ -167,7 +177,7 @@ export default function WhyChooseUsSection({ onOpenBooking }) {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+            <div className="reveal-fade-up delay-400 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
               <Link 
                 to="/sundarban-tour-packages" 
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white bg-accent hover:bg-[#b35d3e] shadow-[0_6px_20px_rgba(201,111,79,0.35)] transition-all duration-200 hover:scale-105 active:scale-95 text-center"

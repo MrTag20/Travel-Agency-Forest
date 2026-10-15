@@ -5,7 +5,6 @@ import WhyChooseUsSection from '../components/WhyChooseUsSection';
 import CuratedTourPackagesSection from '../components/CuratedTourPackagesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FaqAccordion from '../components/FaqAccordion';
-import { ButterflyOutline, IndianEagleOutline } from '../components/WildlifeOutlines';
 import { COMPANY_INFO, FAQS } from '../data/travelData';
 import { 
   ShieldCheck, 
@@ -40,9 +39,9 @@ export default function HomePage({ onOpenBooking }) {
       <CuratedTourPackagesSection onOpenBooking={onOpenBooking} />
 
       {/* 4. 4-Pillar Trust Strip */}
-      <section className="py-16 sm:py-24 relative overflow-hidden bg-ivory/60">
+      <section className="py-10 sm:py-14 relative overflow-hidden bg-ivory/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-8 sm:mb-10">
             <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-2">
               The Sundarban Guarantee
             </span>
@@ -92,7 +91,8 @@ export default function HomePage({ onOpenBooking }) {
             ].map((pillar, pidx) => (
               <div
                 key={pidx}
-                className="flex flex-col bg-white/95 backdrop-blur-md rounded-2xl overflow-hidden border border-[#d9c9b2]/70 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                data-delay={pidx * 100}
+                className="reveal-fade-up flex flex-col bg-white/95 backdrop-blur-md rounded-2xl overflow-hidden border border-[#d9c9b2]/70 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative w-full h-48 overflow-hidden group">
                   <img
@@ -127,9 +127,18 @@ export default function HomePage({ onOpenBooking }) {
       </section>
 
       {/* 5. 3-Step Simple How It Works Funnel */}
-      <section className="py-16 sm:py-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+      <section className="pt-12 sm:pt-16 pb-10 sm:pb-14 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          {/* Curious Green Chameleon on Branch (reduced size, placed upright as per reference) */}
+          <div className="reveal-fade-left hidden lg:block absolute -left-2 sm:-left-4 lg:-left-6 xl:-left-8 -top-8 sm:-top-10 lg:-top-14 xl:-top-16 w-64 lg:w-76 xl:w-[350px] pointer-events-none drop-shadow-xl z-10 hover:scale-105 transition-transform duration-300">
+            <img 
+              src="/Curious%20Green%20Chameleon%20on%20Branch.png" 
+              alt="Curious Green Chameleon on Branch" 
+              className="w-full h-auto object-contain"
+            />
+          </div>
+
+          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-8 sm:mb-10">
             <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-2">
               Seamless Experience
             </span>
@@ -161,7 +170,8 @@ export default function HomePage({ onOpenBooking }) {
             ].map((step, sidx) => (
               <div
                 key={sidx}
-                className="p-8 rounded-3xl bg-white/90 backdrop-blur-md border border-[#d9c9b2]/70 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden"
+                data-delay={sidx * 120}
+                className="reveal-fade-up p-8 rounded-3xl bg-white/90 backdrop-blur-md border border-[#d9c9b2]/70 shadow-sm hover:shadow-md transition-all relative overflow-hidden"
               >
                 <div className="font-serif text-4xl sm:text-5xl font-extrabold text-accent mb-3.5">
                   {step.num}
@@ -179,14 +189,19 @@ export default function HomePage({ onOpenBooking }) {
       </section>
 
       {/* 6. Visual Experience Gallery */}
-      <section className="py-16 sm:py-24 relative overflow-hidden bg-primary text-white" id="visual-proof">
+      <section className="py-10 sm:py-14 relative overflow-hidden bg-primary text-white" id="visual-proof">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 sm:mb-16">
-            <div className="hidden lg:block shrink-0 opacity-80">
-              <ButterflyOutline size={110} color="#d3ba84" />
+          {/* Header with Title and Wildlife Art PNGs (Doubled Size) */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8 sm:mb-10">
+            <div className="reveal-fade-left hidden lg:flex items-center justify-center shrink-0 w-52 h-52 xl:w-64 xl:h-64 opacity-95 hover:opacity-100 transition-all hover:scale-105 duration-300">
+              <img 
+                src="/download__10_-removebg-preview.png" 
+                alt="Golden Leopard Line Art" 
+                className="max-h-full max-w-full object-contain filter drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]"
+              />
             </div>
 
-            <div className="text-center max-w-2xl mx-auto">
+            <div className="reveal-fade-up text-center max-w-2xl mx-auto">
               <div className="inline-flex items-center gap-2 mb-2">
                 <span className="w-8 h-[1px] bg-sand/60" />
                 <span className="text-xs font-bold uppercase tracking-widest text-sand">
@@ -205,8 +220,12 @@ export default function HomePage({ onOpenBooking }) {
               </p>
             </div>
 
-            <div className="hidden lg:block shrink-0 opacity-80">
-              <IndianEagleOutline size={110} color="#d3ba84" />
+            <div className="reveal-fade-right hidden lg:flex items-center justify-center shrink-0 w-52 h-52 xl:w-64 xl:h-64 opacity-95 hover:opacity-100 transition-all hover:scale-105 duration-300">
+              <img 
+                src="/Elegant%20Gold%20Butterfly%20Line%20Art.png" 
+                alt="Elegant Gold Butterfly Line Art" 
+                className="max-h-full max-w-full object-contain filter drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]"
+              />
             </div>
           </div>
 
@@ -251,7 +270,8 @@ export default function HomePage({ onOpenBooking }) {
             ].map((exp, idx) => (
               <div
                 key={idx}
-                className="flex flex-col bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/15 hover:border-accent transition-all duration-300 hover:-translate-y-1 group"
+                data-delay={idx * 100}
+                className="reveal-fade-up flex flex-col bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/15 hover:border-accent transition-all duration-300 hover:-translate-y-1 group"
               >
                 <div className="relative w-full h-48 overflow-hidden">
                   <img
@@ -289,7 +309,7 @@ export default function HomePage({ onOpenBooking }) {
             ))}
           </div>
 
-          <div className="mt-12 sm:mt-16 text-center">
+          <div className="mt-8 sm:mt-10 text-center">
             <Link 
               to="/sundarban-experiences"
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-accent hover:bg-[#b35d3e] text-white font-semibold text-sm transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg"
@@ -305,9 +325,9 @@ export default function HomePage({ onOpenBooking }) {
       <TestimonialsSection />
 
       {/* 8. Curated Buyer FAQs */}
-      <section className="py-16 sm:py-24 relative overflow-hidden bg-white/60">
+      <section className="py-10 sm:py-14 relative overflow-hidden bg-white/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <div className="reveal-fade-up text-center max-w-2xl mx-auto mb-8 sm:mb-10">
             <span className="text-xs font-bold uppercase tracking-widest text-accent block mb-2">
               Direct Answers
             </span>
@@ -319,9 +339,11 @@ export default function HomePage({ onOpenBooking }) {
             </p>
           </div>
 
-          <FaqAccordion items={funnelFaqs} />
+          <div className="reveal-fade-up delay-100">
+            <FaqAccordion items={funnelFaqs} />
+          </div>
 
-          <div className="text-center mt-10">
+          <div className="reveal-fade-up delay-200 text-center mt-6 sm:mt-8">
             <Link 
               to="/sundarban-tour-guide" 
               className="text-primary font-semibold text-sm hover:text-accent inline-flex items-center gap-1.5 transition-colors"
@@ -333,58 +355,71 @@ export default function HomePage({ onOpenBooking }) {
       </section>
 
       {/* 9. Direct Booking Hotline Closing Banner */}
-      <section className="py-16 sm:py-20 relative overflow-hidden bg-primary text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/25 border border-accent/50 text-sand text-xs font-bold uppercase tracking-widest mb-4">
-            Direct Booking Hotline
-          </span>
+      <div className="pt-2 pb-14 sm:pb-20 md:pb-24 px-4 sm:px-6 lg:px-8">
+        <section className="reveal-scale py-14 sm:py-20 relative overflow-hidden rounded-3xl max-w-7xl mx-auto text-white shadow-2xl">
+          {/* Background image of tiger beside river */}
+          <img 
+            src="/images/tiger-beside-river.jpg" 
+            alt="Royal Bengal Tiger beside river in the Sundarbans" 
+            className="absolute inset-0 w-full h-full object-cover object-center" 
+            loading="lazy"
+          />
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-            Ready to Explore the <span className="text-accent italic">Sundarbans</span>?
-          </h2>
+          {/* 10% overlay */}
+          <div className="absolute inset-0 bg-black/10 z-[1]" />
 
-          <p className="text-sm sm:text-base text-sand/85 max-w-2xl mx-auto mb-8 leading-relaxed">
-            Connect with our local tour desk right now for upcoming departure dates, 
-            waterfront cottage availability, and instant quotes. Zero hidden fees, 100% transparent pricing.
-          </p>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <span className="reveal-fade-up inline-block px-4 py-1.5 rounded-full bg-black/50 border border-white/30 backdrop-blur-md text-[#C96F4F] text-xs font-bold uppercase tracking-widest mb-4 drop-shadow-md">
+              Direct Booking Hotline
+            </span>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <button
-              onClick={() => onOpenBooking && onOpenBooking()}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-accent hover:bg-[#b35d3e] text-white font-semibold text-sm sm:text-base shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
-            >
-              <Calendar className="w-5 h-5" />
-              <span>Plan Your Trip Online</span>
-            </button>
+            <h2 className="reveal-fade-up delay-100 font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+              Ready to Explore the <span className="text-[#C96F4F] italic">Sundarbans</span>?
+            </h2>
 
-            <a
-              href={`https://wa.me/${COMPANY_INFO.whatsappNumberDigits}?text=Hello%20SM%20Bengal%20Travel,%20I%20am%20ready%20to%20plan%20my%20Sundarban%20tour.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-sm sm:text-base shadow-lg hover:scale-105 active:scale-95 transition-all"
-            >
-              <MessageSquare className="w-5 h-5" />
-              <span>Chat on WhatsApp</span>
-            </a>
+            <p className="reveal-fade-up delay-150 text-sm sm:text-base text-white/95 max-w-2xl mx-auto mb-8 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] font-medium">
+              Connect with our local tour desk right now for upcoming departure dates, 
+              waterfront cottage availability, and instant quotes. Zero hidden fees, 100% transparent pricing.
+            </p>
 
-            <a
-              href={`tel:${COMPANY_INFO.phone}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-white font-semibold text-sm sm:text-base transition-colors"
-            >
-              <Phone className="w-4 h-4 text-accent" />
-              <span>Call {COMPANY_INFO.phone}</span>
-            </a>
+            <div className="reveal-fade-up delay-200 flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+              <button
+                onClick={() => onOpenBooking && onOpenBooking()}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-accent hover:bg-[#b35d3e] text-white font-semibold text-sm sm:text-base shadow-[0_4px_20px_rgba(0,0,0,0.6)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              >
+                <Calendar className="w-5 h-5" />
+                <span>Plan Your Trip Online</span>
+              </button>
+
+              <a
+                href={`https://wa.me/${COMPANY_INFO.whatsappNumberDigits}?text=Hello%20SM%20Bengal%20Travel,%20I%20am%20ready%20to%20plan%20my%20Sundarban%20tour.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-sm sm:text-base shadow-[0_4px_20px_rgba(0,0,0,0.6)] hover:scale-105 active:scale-95 transition-all"
+              >
+                <MessageSquare className="w-5 h-5" />
+                <span>Chat on WhatsApp</span>
+              </a>
+
+              <a
+                href={`tel:${COMPANY_INFO.phone}`}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-black/60 hover:bg-black/80 border border-white/40 text-white font-semibold text-sm sm:text-base backdrop-blur-md transition-colors shadow-lg"
+              >
+                <Phone className="w-4 h-4 text-[#C96F4F]" />
+                <span>Call {COMPANY_INFO.phone}</span>
+              </a>
+            </div>
+
+            <div className="reveal-fade-up delay-300 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-white/95 pt-6 border-t border-white/25 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] font-medium">
+              <span>⚡ Instant Booking Confirmation</span>
+              <span>•</span>
+              <span>✓ 100% Govt. Forest Clearance</span>
+              <span>•</span>
+              <span>🛡️ Certified Local Naturalists</span>
+            </div>
           </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-sand/75 pt-6 border-t border-white/10">
-            <span>⚡ Instant Booking Confirmation</span>
-            <span>•</span>
-            <span>✓ 100% Govt. Forest Clearance</span>
-            <span>•</span>
-            <span>🛡️ Certified Local Naturalists</span>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import React from 'react';
  * Delicate golden/terracotta line art matching the luxury aesthetic
  */
 
-export function TigerOutline({ size = 120, color = "#d3ba84", className = "" }) {
+export function TigerOutline({ size = 140, color = "#d3ba84", className = "" }) {
   return (
     <svg 
       width={size} 
@@ -14,54 +14,136 @@ export function TigerOutline({ size = 120, color = "#d3ba84", className = "" }) 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-label="Royal Bengal Tiger Outline"
+      aria-label="Full Body Royal Bengal Tiger Outline"
     >
-      {/* Outer Glow / Halo ring */}
-      <circle cx="60" cy="60" r="54" stroke={color} strokeWidth="1" strokeDasharray="3 4" strokeOpacity="0.45" />
-      <circle cx="60" cy="60" r="48" stroke={color} strokeWidth="0.8" strokeOpacity="0.3" />
+      {/* Outer Glow / Halo rings */}
+      <circle cx="60" cy="60" r="56" stroke={color} strokeWidth="1" strokeDasharray="3 4" strokeOpacity="0.45" />
+      <circle cx="60" cy="60" r="50" stroke={color} strokeWidth="0.8" strokeOpacity="0.3" />
       
-      {/* Tiger Head Profile & Contours */}
+      {/* Mangrove shoreline / ground line */}
       <path 
-        d="M32 46 C30 36 38 28 48 30 C53 31 57 36 59 40 C63 36 67 31 72 30 C82 28 90 36 88 46 C87 52 83 56 82 62 C80 72 74 84 60 88 C46 84 40 72 38 62 C37 56 33 52 32 46 Z" 
+        d="M14 91 C34 87 86 87 106 91" 
         stroke={color} 
         strokeWidth="1.8" 
         strokeLinecap="round" 
-        strokeLinejoin="round"
       />
-      {/* Tiger Ears Inner */}
-      <path d="M42 33 C40 37 42 42 45 44" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
-      <path d="M78 33 C80 37 78 42 75 44" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
-      
-      {/* Forehead Stripes & Crown Mark */}
-      <path d="M60 36 L60 48" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M54 40 L60 44 L66 40" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M52 48 L60 52 L68 48" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      
-      {/* Eyes */}
-      <path d="M44 56 C46 54 50 54 52 56 C50 58 46 58 44 56 Z" stroke={color} strokeWidth="1.6" fill={color} fillOpacity="0.25" />
-      <circle cx="48" cy="56" r="1.5" fill={color} />
-      <path d="M68 56 C70 54 74 54 76 56 C74 58 70 58 68 56 Z" stroke={color} strokeWidth="1.6" fill={color} fillOpacity="0.25" />
-      <circle cx="72" cy="56" r="1.5" fill={color} />
-      
-      {/* Nose & Muzzle */}
-      <path d="M56 65 L64 65 L60 69 Z" stroke={color} strokeWidth="1.6" fill={color} fillOpacity="0.3" strokeLinejoin="round" />
-      <path d="M60 69 L60 74" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M54 74 C57 76 60 76 60 74 C60 76 63 76 66 74" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M56 78 C58 80 62 80 64 78" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M22 89 C18 94 13 97 9 98" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeOpacity="0.5" />
+      <path d="M98 89 C102 94 107 96 111 98" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeOpacity="0.5" />
+
+      {/* Full Body Bengal Tiger Silhouette & Contours (Facing Right) */}
+      {/* Head, Muzzle & Ears */}
+      <path 
+        d="M86 44 C84 41 82 39 80 39 C78 39 77 41 78 43 C79 45 81 47 83 48 C81 50 80 54 83 57 C85 59 88 58 91 56 L94 55 C96 54 97 52 96 50 C95 48 93 47 90 47 C89 45 87 44 86 44 Z" 
+        stroke={color} 
+        strokeWidth="1.7" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+      />
+      {/* Ears Inner Accent */}
+      <path d="M80 40 C79 42 81 44 83 45" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
+      {/* Nose & Eye */}
+      <circle cx="89" cy="48" r="1.4" fill={color} />
+      <path d="M87 47 C89 46 91 47 92 48" stroke={color} strokeWidth="1" strokeLinecap="round" />
+      <path d="M95 51 L93 53 L96 53 Z" fill={color} fillOpacity="0.4" stroke={color} strokeWidth="0.8" />
       
       {/* Whiskers */}
-      <path d="M42 68 L28 66" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeOpacity="0.85" />
-      <path d="M40 72 L26 73" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeOpacity="0.85" />
-      <path d="M42 76 L30 80" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeOpacity="0.85" />
-      <path d="M78 68 L92 66" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeOpacity="0.85" />
-      <path d="M80 72 L94 73" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeOpacity="0.85" />
-      <path d="M78 76 L90 80" stroke={color} strokeWidth="1.2" strokeLinecap="round" strokeOpacity="0.85" />
-      
-      {/* Cheek Stripes */}
-      <path d="M38 58 C35 60 35 64 36 67" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
-      <path d="M82 58 C85 60 85 64 84 67" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
-      <path d="M42 50 C38 52 38 55 40 57" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
-      <path d="M78 50 C82 52 82 55 80 57" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M92 53 L99 52" stroke={color} strokeWidth="1" strokeLinecap="round" strokeOpacity="0.8" />
+      <path d="M92 54 L100 55" stroke={color} strokeWidth="1" strokeLinecap="round" strokeOpacity="0.8" />
+      <path d="M91 56 L98 58" stroke={color} strokeWidth="1" strokeLinecap="round" strokeOpacity="0.8" />
+
+      {/* Main Spine & Body Topline */}
+      <path 
+        d="M80 44 C76 43 73 42 68 44 C61 46 54 47 48 45 C42 43 36 43 32 47 C29 50 28 53 29 56" 
+        stroke={color} 
+        strokeWidth="1.8" 
+        strokeLinecap="round" 
+      />
+
+      {/* Tail (Sinuous Bengal Curve with Ring Stripes) */}
+      <path 
+        d="M31 48 C24 51 18 57 17 65 C16 71 19 76 22 75 C25 74 25 68 23 63 C22 58 24 54 28 51" 
+        stroke={color} 
+        strokeWidth="1.6" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+      />
+      {/* Tail Tip */}
+      <path d="M19 74 C21 76 23 75 22 73" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+      {/* Tail Stripes */}
+      <path d="M25 53 L22 56" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M21 59 L18 61" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M18 66 L16 68" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
+
+      {/* Chest, Belly & Underline */}
+      <path 
+        d="M83 57 C80 62 76 65 72 65 C68 65 62 64 56 65 C50 66 44 65 40 62 C38 60 37 57 37 54" 
+        stroke={color} 
+        strokeWidth="1.6" 
+        strokeLinecap="round" 
+      />
+
+      {/* Forelegs (Right Foreground & Left Background) */}
+      {/* Right Foreleg (Stepping forward) */}
+      <path 
+        d="M74 61 C75 67 76 76 77 84 C77 87 75 89 71 89 C69 89 69 86 70 83 C71 78 70 70 69 64" 
+        stroke={color} 
+        strokeWidth="1.7" 
+        strokeLinejoin="round" 
+        strokeLinecap="round" 
+      />
+      {/* Front Right Paw Claws / Toes */}
+      <path d="M71 89 L76 89" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M73 87 L73 89" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
+
+      {/* Left Foreleg (Back leg stepping) */}
+      <path 
+        d="M80 60 C82 66 83 73 85 82 C85 86 83 88 80 88 C78 88 78 85 79 82" 
+        stroke={color} 
+        strokeWidth="1.4" 
+        strokeLinecap="round" 
+        strokeOpacity="0.8" 
+      />
+      <path d="M80 88 L84 88" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.8" />
+
+      {/* Hindlegs (Right Foreground & Left Background) */}
+      {/* Right Hindleg (Muscular haunch and powerful stride) */}
+      <path 
+        d="M39 45 C35 50 32 58 33 67 C33 73 35 80 36 86 C36 89 34 90 31 90 C29 90 29 87 30 84 C31 77 29 70 30 63" 
+        stroke={color} 
+        strokeWidth="1.7" 
+        strokeLinejoin="round" 
+        strokeLinecap="round" 
+      />
+      {/* Rear Right Paw Claws */}
+      <path d="M31 90 L36 90" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M33 88 L33 90" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
+
+      {/* Left Hindleg (Back leg stepped forward) */}
+      <path 
+        d="M45 54 C44 61 43 71 44 80 C44 84 43 87 40 88 C38 88 38 85 39 82" 
+        stroke={color} 
+        strokeWidth="1.4" 
+        strokeLinecap="round" 
+        strokeOpacity="0.8" 
+      />
+      <path d="M40 88 L44 88" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.8" />
+
+      {/* Royal Bengal Tiger Stripes Across Flanks & Ribs */}
+      {/* Shoulder Stripes */}
+      <path d="M72 47 C74 52 72 57 71 61" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M76 49 C77 53 76 57 74 60" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
+
+      {/* Rib Stripes */}
+      <path d="M66 48 C67 54 65 59 63 63" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M61 48 C62 54 60 59 58 63" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M55 48 C56 54 54 59 52 63" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M50 48 C51 53 49 58 48 62" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
+
+      {/* Haunch & Thigh Stripes */}
+      <path d="M44 47 C45 52 42 57 40 61" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M38 50 C37 56 36 62 35 68" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M34 71 L36 75" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M73 70 L75 74" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
     </svg>
   );
 }

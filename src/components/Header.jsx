@@ -89,12 +89,12 @@ export default function Header({ onOpenBooking, onOpenAiChat }) {
             className="flex flex-col group transition-opacity hover:opacity-90"
           >
             <span 
-              className="font-serif text-lg sm:text-2xl font-bold tracking-wider leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+              className="font-serif text-base sm:text-lg lg:text-xl font-bold tracking-wider leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
             >
               SM BENGAL <span className="text-accent">TRAVEL</span>
             </span>
             <span 
-              className="text-[10px] sm:text-xs text-white/90 uppercase tracking-[0.16em] font-semibold mt-0.5 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
+              className="text-[9px] sm:text-[10px] text-white/85 uppercase tracking-[0.18em] font-semibold mt-0.5 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
             >
               Sundarban Wildlife & Escapes
             </span>
