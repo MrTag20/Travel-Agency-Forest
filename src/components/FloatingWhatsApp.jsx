@@ -8,15 +8,15 @@ export default function FloatingWhatsApp() {
   );
 
   return (
-    <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40">
+    <div className="fixed bottom-16 right-4 sm:bottom-6 sm:right-6 z-40">
       <a
         href={`https://wa.me/${COMPANY_INFO.whatsappNumberDigits}?text=${defaultMsg}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contact SM Bengal Travel on WhatsApp"
-        className="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_8px_24px_rgba(37,211,102,0.45)] hover:shadow-[0_12px_28px_rgba(37,211,102,0.6)] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+        className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_8px_24px_rgba(37,211,102,0.45)] hover:shadow-[0_12px_28px_rgba(37,211,102,0.6)] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
       >
-        <MessageSquare className="w-7 h-7" />
+        <MessageSquare className="w-6 h-6 sm:w-7 sm:h-7" />
       </a>
     </div>
   );

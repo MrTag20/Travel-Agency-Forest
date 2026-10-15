@@ -148,8 +148,8 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
 
   return (
     <>
-      {/* Floating Trigger Widget */}
-      <div className="fixed bottom-20 right-5 sm:bottom-24 sm:right-6 z-40 flex flex-col items-end gap-2">
+      {/* Floating Trigger Widget (Raised on mobile to stay clear of Netlify badge & WhatsApp button) */}
+      <div className="fixed bottom-32 right-4 sm:bottom-24 sm:right-6 z-40 flex flex-col items-end gap-2">
         {/* Subtle Welcome Tooltip Banner */}
         {showTooltip && !isOpen && (
           <div className="bg-white text-primary px-3.5 py-2.5 rounded-2xl shadow-xl text-xs sm:text-sm font-semibold flex items-center gap-2.5 border border-accent/30 max-w-[280px] animate-fade-in">
@@ -193,18 +193,18 @@ export default function AiChatAssistant({ onOpenBooking, isOpen, onClose, onTogg
         </button>
       </div>
 
-      {/* Main AI Chat Window Modal / Drawer */}
+      {/* Main AI Chat Window Modal / Drawer (Lifted with pb-16 so Netlify badge never covers input/send button) */}
       {isOpen && (
         <div
           role="dialog"
           aria-label="Sundarban AI Chat Assistant"
-          className="fixed inset-0 z-50 flex items-end justify-center sm:justify-end sm:p-6 bg-black/40 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-end justify-center sm:justify-end p-2 pb-16 sm:p-6 bg-black/40 backdrop-blur-sm"
           onClick={(e) => {
             if (e.target === e.currentTarget) onClose();
           }}
         >
           <div
-            className="w-full sm:max-w-[430px] h-[85vh] sm:h-[620px] max-h-[92vh] bg-white/95 backdrop-blur-2xl rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-[#d9c9b2]/70 animate-scale-up"
+            className="w-full sm:max-w-[430px] h-[78vh] sm:h-[620px] max-h-[84vh] bg-white/95 backdrop-blur-2xl rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-[#d9c9b2]/70 animate-scale-up"
           >
             {/* Header */}
             <div className="p-4 bg-gradient-to-r from-primary to-[#1f2720] text-white flex items-center justify-between border-b border-white/10 shrink-0">

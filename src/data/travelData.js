@@ -5,9 +5,9 @@ export const COMPANY_INFO = {
   name: "SM Bengal Travel",
   legalName: "SM Bengal Travel Services",
   tagline: "Escape Into The Wild — Premier Sundarban Journeys",
-  phone: "+91 98300 00000", // Easily configured with actual owner number
-  whatsapp: "+91 98300 00000",
-  whatsappNumberDigits: "919830000000",
+  phone: "+91 9088785701",
+  whatsapp: "+91 9088785701",
+  whatsappNumberDigits: "919088785701",
   email: "info@smbengaltravel.com",
   bookingEmail: "bookings@smbengaltravel.com",
   address: "Kolkata Office: Park Street / Science City Junction, Kolkata, West Bengal 700046",

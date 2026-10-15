@@ -157,7 +157,7 @@ export default function BookingModal({ isOpen, onClose, preselectedPackageId }) 
                     type="tel"
                     name="phone"
                     required
-                    placeholder="+91 98300 XXXXX"
+                    placeholder="+91 90887 85701"
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-sand/80 focus:border-accent bg-white text-xs sm:text-sm text-primary outline-none transition-colors"

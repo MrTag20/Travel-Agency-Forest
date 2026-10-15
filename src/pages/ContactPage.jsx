@@ -220,7 +220,7 @@ export default function ContactPage() {
                         type="tel"
                         name="phone"
                         required
-                        placeholder="+91 98300 XXXXX"
+                        placeholder="+91 90887 85701"
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl border border-[#d9c9b2] bg-white text-sm text-[#1c2e24] focus:outline-none focus:ring-2 focus:ring-[#2d5a3f] transition-all"
