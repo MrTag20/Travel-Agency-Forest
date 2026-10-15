@@ -16,55 +16,72 @@ import { COMPANY_INFO } from '../data/travelData';
 
 export default function HeroCanvas({ onOpenBooking }) {
   const videoRef = useRef(null);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Attempt to autoplay with audio in loop as requested
-    video.muted = false;
-    const playPromise = video.play();
+    // Mobile-safe initial playback: always start muted so mobile OS never halts video
+    video.muted = true;
+    video.defaultMuted = true;
+    setIsMuted(true);
 
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          setIsMuted(false);
-        })
-        .catch(() => {
-          // If browser policy restricts unmuted autoplay, fallback to muted autoplay
+    const startPlayback = () => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Fallback if needed
           video.muted = true;
-          setIsMuted(true);
           video.play().catch(() => {});
         });
-    }
-
-    // Auto-unmute on first user interaction if browser initially blocked audio
-    const handleFirstUserInteraction = () => {
-      if (videoRef.current && videoRef.current.muted) {
-        videoRef.current.muted = false;
-        setIsMuted(false);
       }
     };
 
-    window.addEventListener('click', handleFirstUserInteraction, { once: true });
-    window.addEventListener('touchstart', handleFirstUserInteraction, { once: true });
+    startPlayback();
+
+    // Auto-resume if page visibility changes (user switches tabs/apps and comes back)
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && videoRef.current) {
+        videoRef.current.play().catch(() => {});
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
-      window.removeEventListener('click', handleFirstUserInteraction);
-      window.removeEventListener('touchstart', handleFirstUserInteraction);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
 
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    const newMutedState = !videoRef.current.muted;
-    videoRef.current.muted = newMutedState;
-    setIsMuted(newMutedState);
+  const toggleMute = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const video = videoRef.current;
+    if (!video) return;
 
-    // If unmuting and video happens to be paused, ensure it plays
-    if (!newMutedState && videoRef.current.paused) {
+    const nextMuted = !video.muted;
+    video.muted = nextMuted;
+    setIsMuted(nextMuted);
+
+    // Keep video playing uninterruptedly
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // If mobile OS rejects unmuted playback, revert to muted and maintain playback
+        video.muted = true;
+        setIsMuted(true);
+        video.play().catch(() => {});
+      });
+    }
+  };
+
+  const handleVideoPause = () => {
+    // If mobile OS pauses the video for any reason, immediately resume playback
+    if (videoRef.current) {
       videoRef.current.play().catch(() => {});
     }
   };
@@ -81,15 +98,23 @@ export default function HeroCanvas({ onOpenBooking }) {
       className="relative w-full min-h-[640px] h-screen max-h-[1000px] overflow-hidden bg-[#040d07] flex items-center"
       aria-label="Sundarban Wilderness Hero"
     >
-      {/* Background Video Element Playing in Loop with Audio */}
+      {/* Background Video Element Playing Continuously in Loop */}
       <video
         ref={videoRef}
         src="/Tiger_walking_in_mangrove_delta_20261012184129_gwr_video_mvp.mp4"
         loop
         playsInline
+        webkit-playsinline="true"
         autoPlay
+        muted
+        defaultMuted
+        preload="auto"
+        disablePictureInPicture
+        disableRemotePlayback
+        onPause={handleVideoPause}
+        onEnded={() => videoRef.current?.play().catch(() => {})}
         onLoadedData={() => setIsVideoLoaded(true)}
-        className={`absolute inset-0 w-full h-full object-cover z-[1] transition-opacity duration-700 ${
+        className={`absolute inset-0 w-full h-full object-cover z-[1] transition-opacity duration-700 pointer-events-none ${
           isVideoLoaded ? 'opacity-100' : 'opacity-40'
         }`}
       />
@@ -104,7 +129,12 @@ export default function HeroCanvas({ onOpenBooking }) {
       {/* Audio Icon-Based Mute / Unmute Button */}
       <div className="absolute top-20 sm:top-24 right-4 sm:right-8 z-20">
         <button
+          type="button"
           onClick={toggleMute}
+          onTouchEnd={(e) => {
+            e.stopPropagation();
+            toggleMute(e);
+          }}
           aria-label={isMuted ? 'Unmute video audio' : 'Mute video audio'}
           title={isMuted ? 'Unmute audio' : 'Mute audio'}
           className="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center bg-black/60 hover:bg-black/85 text-white border border-white/30 hover:border-accent backdrop-blur-md shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent"
